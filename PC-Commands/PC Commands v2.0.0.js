@@ -1,6 +1,6 @@
 //PC Commands [Advanced]//
 //Made by NikoTBC//
-//version 1.2.2//
+//version 2.0.0//
 
 var worldEditToggle = false
 var x1 = 0;
@@ -78,6 +78,7 @@ clientMessage("§a/effect: §fGives a status effect");
 clientMessage("§a/kill: §fKills yourself");
 clientMessage("§a/info: §fTells the mod info");
 clientMessage("§a/ignite: §fIgnite player for a specific time");
+clientMessage("§a/xp: §fGive experience");
 break;
 }
 }
@@ -153,6 +154,15 @@ break;
 case 'tp':{
 setPosition(getPlayerEnt(), parseInt(p[1]), parseInt(p[2]), parseInt(p[3]));
 clientMessage("Teleported to X: " + parseInt(p[1]) + " Y: " + parseInt(p[2]) + " Z: " + parseInt(p[3]));
+break;
+}
+case 'xp':{
+if(!p[1]){
+clientMessage("Usage: /xp <Amount>");
+break;
+}
+Player.addExp(parseInt(p[1]));
+clientMessage("Given " + p[1] + " experience to " + Player.getName(getPlayerEnt()));
 break;
 }
 case 'summon':{
@@ -257,7 +267,7 @@ break;
 }
 case 'info':{
 clientMessage("§b[PC Commands] §fMade by §bNiko§eTBC");
-clientMessage("§b[PC Commands] §ev1.2.2");
+clientMessage("§b[PC Commands] §ev2.0.0");
 break;
 }
 case 'worldedit':{
